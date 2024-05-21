@@ -217,7 +217,7 @@ struct diag_dgram {
    enum diag_op op;
 #if HAVE_CLOCK_GETTIME
    struct timespec now;
-#elif HAVE_GETTIMEOFDAY
+#elif HAVE_PROTOTYPE_LIB_gettimeofday
    struct timeval now;
 #else
    time_t now;
@@ -228,9 +228,9 @@ struct diag_dgram {
    char text[TEXTLEN];
 } ;
 
-extern sig_atomic_t diag_in_handler;
-extern sig_atomic_t diag_immediate_msg;
-extern sig_atomic_t diag_immediate_exit;
+extern volatile sig_atomic_t diag_in_handler;
+extern volatile sig_atomic_t diag_immediate_msg;
+extern volatile sig_atomic_t diag_immediate_exit;
 
 extern void diag_set(char what, const char *arg);
 extern void diag_set_int(char what, int arg);

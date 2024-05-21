@@ -1,4 +1,7 @@
 config.log
+cannot.lst
+failed.lst
+result.txt
 testalt.conf
 testcert*.conf
 test*.pem
