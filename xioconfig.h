@@ -39,16 +39,22 @@
 #  define WITH_IP4 1
 #endif
 
+#if 0
 #if WITH_IP6
 #  if !defined(HAVE_NETINET_IP6_H)
 #    undef WITH_IP6
 #  endif
 #endif
+#endif
 
 #if !WITH_IP4 && !WITH_IP6
-#  if WITH_TCP || WITH_UDP || WITH_RAWIP
+#  if WITH_TCP || WITH_UDP || WITH_SCTP || WITH_DCCP || WITH_UDPLITE || WITH_RAWIP
 #    define WITH_IP4 1
 #  endif
+#endif
+
+#if WITH_UDP || WITH_UDPLITE
+#  define _WITH_UDP 1
 #endif
 
 #if WITH_UNIX || WITH_IP4 || WITH_IP6 || WITH_SOCKS4 || WITH_RAWIP || WITH_GENERICSOCKET
@@ -65,7 +71,13 @@
 #  undef WITH_LIBWRAP
 #endif
 
-#if WITH_GENERICSOCKET || WITH_TUN
+#if WITH_INTERFACE || WITH_TUN
+#  define _WITH_INTERFACE 1
+#else
+#  define _WITH_INTERFACE 0
+#endif
+
+#if WITH_GENERICSOCKET || _WITH_INTERFACE
 #  define _WITH_SOCKET 1
 #endif
 
@@ -77,11 +89,11 @@
 #  define _WITH_IP6 1
 #endif
 
-#if WITH_NAMED || WITH_TUN
+#if WITH_NAMED
 #  define _WITH_NAMED 1
 #endif
 
-#if WITH_FILE || WITH_TUN
+#if WITH_FILE
 #  define _WITH_FILE 1
 #endif
 
