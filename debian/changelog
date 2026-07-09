@@ -1,3 +1,10 @@
+socat (1.8.0.0-4deepin2) unstable; urgency=high
+
+  * Fix CVE-2026-56123: SOCKS5 heap buffer overflow in dstdata type
+    (Closes: CVE-2026-56123)
+
+ -- deepin-ci-robot <packages@deepin.org>  Fri, 10 Jul 2026 03:15:31 +0800
+
 socat (1.8.0.0-4deepin1) unstable; urgency=medium
 
   * fix CVE-2024-54661 
