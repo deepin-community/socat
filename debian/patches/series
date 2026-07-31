@@ -5,5 +5,4 @@
 07-compat-define-PATH_MAX.patch
 08-test.sh-fixes.patch
 09-xioinitialize.c.patch
-10-error.c-buffer-overflow-in-msg2.patch
 CVE-2026-56123.patch
